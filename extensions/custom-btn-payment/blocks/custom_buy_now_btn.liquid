@@ -1,0 +1,41 @@
+<form
+  action="https://app.confysteps.com/payment"
+  method="post"
+  id="custom_form"
+  onsubmit="handelSubmit(event);">
+
+  <input type="hidden" value="{{ product.id }}" id="main_product_id">
+  <input type="hidden" value="{{ product.variants[0].id }}" id="main_variant_id" name="variant">
+  <input type="hidden" value="" id="shop_name" name="shop">
+  <input type="hidden" value="" id="cart_detailes" name="cart">
+
+  <button
+   type="submit"
+    style=" background-color: {{ block.settings.cod_btn_bg }};"
+    class="product-form__submit button button--full-width button--primary">{{ block.settings.custom_buy_btn }}</button>
+
+</form>
+
+<script src="{{ 'jQuery.js' | asset_url }}" defer></script>
+<script src="{{ 'custom_btn.js' | asset_url }}" defer></script>
+
+
+{% schema %}
+  {
+    "name": "Custom Payment",
+    "target": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "cod_btn_bg",
+        "label": "cod_btn background color",
+        "default": "#1b173a"
+      }, {
+        "type": "text",
+        "id": "custom_buy_btn",
+        "label": "btn buy now text",
+        "default": "BUY NOW"
+      }
+    ]
+  }
+{% endschema %}
